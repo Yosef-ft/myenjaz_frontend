@@ -1,11 +1,11 @@
-"use client";
+
 import React, { useState, useEffect, ChangeEvent } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "../../Api/axios.js";
-import Footer from "../../components/Footer/Footer";
+import axios from "../../Api/axios";
+// import Footer from "../../components/Footer/Footer"; 
 import countries from "./country.js";
-import { Upload, CheckSquare } from "lucide-react";
+// import { Upload, CheckSquare } from "lucide-react";
 
 interface FormData {
   maritalStatus: string;
@@ -147,7 +147,7 @@ export default function ApplicationForm() {
     sponsorName: "",
     sponsorPhone: "",
     houseNo: "",
-    agent: "00000000-0000-0000-0000-000000000000",
+    agent: localStorage.getItem("username")!,
     sponsorArabic: "",
     visaType: "",
     contractNo: "",
@@ -267,14 +267,9 @@ export default function ApplicationForm() {
         if (photos.fullSize) formDataObj.append("fullSizePhoto", photos.fullSize);
         if (photos.passport) formDataObj.append("passportPhoto", photos.passport);
 
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
 
-        const response = await axios.post("/application/new_application", formDataObj, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.post("/application/new_application", formDataObj);
 
         if (response.status === 201 || response.status === 200) {
           toast.success("Application submitted successfully!", { position: "top-right" });
@@ -853,7 +848,7 @@ export default function ApplicationForm() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Agent</label>
-                <select
+                {/* <select
                   name="agent"
                   value={formData.agent}
                   onChange={handleChange}
@@ -863,7 +858,15 @@ export default function ApplicationForm() {
                     00000000-0000-0000-0000-000000000000
                   </option>
                   <option value="ALSAFA RECRUITMENT OFFICE">ALSAFA RECRUITMENT OFFICE</option>
-                </select>
+                </select> */}
+                <input
+                  type="text"
+                  name="agent"
+                  value={localStorage.getItem("username")!}
+                  // onChange={handleChange}
+                  disabled
+                  className="mt-1 block w-full border border-gray-300 rounded-none p-2 text-sm focus:ring-blue-500 focus:border-blue-500 hover:bg-gray-50"
+                />                
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Sponsor Arabic</label>
