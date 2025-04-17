@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Myenjaz from './pages/HOME/Home';
-import Settings from './pages/Settings/Settings';
+import Settings from './pages/settings/settings';
 import Login from './pages/Login/Login';
 import NewApplication from './pages/NewApplication/NewApplication';
 import ApplicantList from './pages/Application/Applicants';
@@ -69,6 +69,7 @@ function App() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('userid');
+    localStorage.removeItem('role');
     setUser(null);
   };
 
