@@ -75,7 +75,7 @@ function Home() {
           </p>
           <a
             href="#requirements"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-800 transition"
+            className="inline-block bg-[#E6534E] text-white px-6 py-3 rounded-md hover:bg-[#b91c1c] transition"
           >
             Learn More
           </a>
@@ -92,7 +92,7 @@ function Home() {
             {/* Passport */}
             <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
               <div className="flex justify-center mb-4">
-                <Wrench className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+                <Wrench className="w-12 h-12 text-[#E6534E] dark:text-[#f87171]" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Passport</h3>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
@@ -109,7 +109,7 @@ function Home() {
             {/* Visa Application Form */}
             <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
               <div className="flex justify-center mb-4">
-                <Settings className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+                <Settings className="w-12 h-12 text-[#E6534E] dark:text-[#f87171]" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Visa Application Form</h3>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
@@ -126,7 +126,7 @@ function Home() {
             {/* Easynjaz Registration */}
             <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
               <div className="flex justify-center mb-4">
-                <Phone className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+                <Phone className="w-12 h-12 text-[#E6534E] dark:text-[#f87171]" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Easynjaz Registration</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
@@ -184,7 +184,7 @@ function Home() {
             {/* Scalable */}
             <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1 text-center">
               <div className="flex justify-center mb-4">
-                <Scale className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+                <Scale className="w-12 h-12 text-[#E6534E] dark:text-[#f87171]" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Scalable</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
@@ -200,7 +200,7 @@ function Home() {
             {/* Simplification */}
             <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1 text-center">
               <div className="flex justify-center mb-4">
-                <Zap className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+                <Zap className="w-12 h-12 text-[#E6534E] dark:text-[#f87171]" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Simplification</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
@@ -216,7 +216,7 @@ function Home() {
             <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1 text-center">
               <div className="flex justify-center mb-4">
                 <svg
-                  className="w-12 h-12 text-blue-600 dark:text-blue-400"
+                  className="w-12 h-12 text-[#E6534E] dark:text-[#f87171]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -242,7 +242,7 @@ function Home() {
             {/* Secured */}
             <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1 text-center">
               <div className="flex justify-center mb-4">
-                <Shield className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+                <Shield className="w-12 h-12 text-[#E6534E] dark:text-[#f87171]" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Secured</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
@@ -260,7 +260,7 @@ function Home() {
       {/* Back to Top Button */}
       <button
         id="btnBackToTop"
-        className="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-800 transition hidden"
+        className="fixed bottom-6 right-6 bg-[#E6534E] text-white p-3 rounded-full shadow-lg hover:bg-[#b91c1c] transition hidden"
       >
         <ArrowUp className="w-6 h-6" />
       </button>

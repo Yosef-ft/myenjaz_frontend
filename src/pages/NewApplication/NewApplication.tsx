@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, ChangeEvent } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -229,7 +228,7 @@ export default function ApplicationForm() {
           <p>Are you sure you want to submit the application?</p>
           <div className="flex gap-2 mt-2">
             <button
-              className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+              className="bg-[#E6534E] text-white px-3 py-1 rounded hover:bg-[#b91c1c]"
               onClick={async () => {
                 await onConfirm();
                 closeToast();
@@ -238,7 +237,7 @@ export default function ApplicationForm() {
               Yes
             </button>
             <button
-              className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+              className="bg-[#E6534E] text-white px-3 py-1 rounded hover:bg-[#b91c1c]"
               onClick={closeToast}
             >
               No
@@ -295,8 +294,8 @@ export default function ApplicationForm() {
           {/* Applicant Section */}
           <div className="border rounded-none shadow-sm mb-4">
             <div className="bg-gray-100 flex justify-between items-center px-4 py-2">
-              <h5 className="text-blue-700 font-bold">Applicant</h5>
-              <button type="button" className="text-blue-700 font-bold hover:underline">
+              <h5 className="text-[#E6534E] font-bold">Applicant</h5>
+              <button type="button" className="text-[#E6534E] font-bold hover:underline">
                 Open Photo Editor
               </button>
             </div>
@@ -340,7 +339,7 @@ export default function ApplicationForm() {
                             accept="image/*"
                             required
                             onChange={(e) => handlePhotoUpload(e, "regular")}
-                            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-sm file:bg-blue-600 file:text-white hover:file:bg-blue-700"
+                            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-sm file:bg-[#E6534E] file:text-white hover:file:bg-[#b91c1c]"
                           />
                         </label>
                       </div>
@@ -363,7 +362,7 @@ export default function ApplicationForm() {
                             type="file"
                             accept="image/*"
                             onChange={(e) => handlePhotoUpload(e, "fullSize")}
-                            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-sm file:bg-blue-600 file:text-white hover:file:bg-blue-700"
+                            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-sm file:bg-[#E6534E] file:text-white hover:file:bg-[#b91c1c]"
                           />
                         </label>
                       </div>
@@ -386,7 +385,7 @@ export default function ApplicationForm() {
                             type="file"
                             accept="image/*"
                             onChange={(e) => handlePhotoUpload(e, "passport")}
-                            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-sm file:bg-blue-600 file:text-white hover:file:bg-blue-700"
+                            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-sm file:bg-[#E6534E] file:text-white hover:file:bg-[#b91c1c]"
                           />
                         </label>
                       </div>
@@ -422,7 +421,7 @@ export default function ApplicationForm() {
                       </div>
                       <button
                         type="button"
-                        className="bg-blue-600 text-white px-4 py-2 rounded-none hover:bg-blue-800 text-sm"
+                        className="bg-[#E6534E] text-white px-4 py-2 rounded-none hover:bg-[#b91c1c] text-sm"
                       >
                         Paste (M)
                       </button>
@@ -461,7 +460,7 @@ export default function ApplicationForm() {
           {/* Personal Information */}
           <div className="border rounded-none shadow-sm mb-4">
             <div className="bg-gray-100 px-4 py-2">
-              <h5 className="text-blue-700 font-bold">Personal Information</h5>
+              <h5 className="text-[#E6534E] font-bold">Personal Information</h5>
             </div>
             <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -1140,7 +1139,7 @@ export default function ApplicationForm() {
                       name="twoPhotographs"
                       checked={formData.twoPhotographs === 1}
                       onChange={handleChange}
-                      className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300"
+                      className="h-5 w-5 text-[#E6534E] focus:ring-[#E6534E] border-gray-300"
                     />
                     <span className="text-sm">Two Photographs</span>
                   </label>
@@ -1150,7 +1149,7 @@ export default function ApplicationForm() {
                       name="idCard"
                       checked={formData.idCard === 1}
                       onChange={handleChange}
-                      className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300"
+                      className="h-5 w-5 text-[#E6534E] focus:ring-[#E6534E] border-gray-300"
                     />
                     <span className="text-sm">ID Card</span>
                   </label>
@@ -1160,7 +1159,7 @@ export default function ApplicationForm() {
                       name="relativeIdCard"
                       checked={formData.relativeIdCard === 1}
                       onChange={handleChange}
-                      className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300"
+                      className="h-5 w-5 text-[#E6534E] focus:ring-[#E6534E] border-gray-300"
                     />
                     <span className="text-sm">Relative ID Card</span>
                   </label>
@@ -1305,7 +1304,7 @@ export default function ApplicationForm() {
                         name={skill.name}
                         checked={formData[skill.name as keyof FormData] === 1}
                         onChange={handleChange}
-                        className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300"
+                        className="h-5 w-5 text-[#E6534E] focus:ring-[#E6534E] border-gray-300"
                       />
                       <span className="text-sm">{skill.label}</span>
                     </label>
@@ -1319,7 +1318,7 @@ export default function ApplicationForm() {
           <div className="text-right">
             <button
               type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded-none hover:bg-blue-800 disabled:bg-gray-400 text-sm"
+              className="bg-[#E6534E] text-white px-4 py-2 rounded-none hover:bg-[#b91c1c] disabled:bg-gray-400 text-sm"
               disabled={loading}
             >
               {loading ? "Saving..." : "Save Application"}

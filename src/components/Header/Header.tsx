@@ -28,7 +28,7 @@ function Header({}: HeaderProps) {
   };
 
   return (
-    <header className="bg-blue-600 text-white shadow-md">
+    <header className="bg-[#E6534E] text-white shadow-md">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -146,7 +146,7 @@ function Header({}: HeaderProps) {
 
         {/* Mobile Menu (Logged-in State) */}
         {localStorage.getItem('token') && isMenuOpen && (
-          <div className="md:hidden mt-4 bg-blue-700 rounded-md shadow-lg">
+          <div className="md:hidden mt-4 bg-[#b91c1c] rounded-md shadow-lg">
             <div className="flex flex-col p-4 space-y-2">
               <Link
                 to="#"

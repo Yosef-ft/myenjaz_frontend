@@ -19,7 +19,18 @@ import {
   DialogActions,
   Alert,
   Snackbar,
+  createTheme,
+  ThemeProvider,
 } from '@mui/material';
+
+// Create a custom theme with our red color
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#E6534E',
+    },
+  },
+});
 
 interface SubAdmin {
   id: number;
@@ -150,201 +161,205 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <Box sx={{ p: 3 }}>
-      <Typography variant="h4" gutterBottom>
-        Settings
-      </Typography>
-
-      {/* Password Change Section */}
-      <Paper sx={{ p: 2, mb: 3 }}>
-        <Typography variant="h6" gutterBottom>
-          Change Password
+    <ThemeProvider theme={theme}>
+      <Box sx={{ p: 3 }}>
+        <Typography variant="h4" gutterBottom>
+          Settings
         </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setOpenPasswordChange(true)}
-        >
-          Change Password
-        </Button>
-      </Paper>
 
-      {/* Sub-Admins Management Section */}
-      <Paper sx={{ p: 2 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-          <Typography variant="h6">Sub-Admins Management</Typography>
+        {/* Password Change Section */}
+        <Paper sx={{ p: 2, mb: 3 }}>
+          <Typography variant="h6" gutterBottom>
+            Change Password
+          </Typography>
           <Button
             variant="contained"
             color="primary"
-            onClick={() => setOpenNewSubAdmin(true)}
-          >
-            Add New Sub-Admin
-          </Button>
-        </Box>
-
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Username</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Full Name</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {subAdmins.map((admin) => (
-                <TableRow key={admin.id}>
-                  <TableCell>{admin.username}</TableCell>
-                  <TableCell>{admin.email}</TableCell>
-                  <TableCell>{admin.full_name}</TableCell>
-                  <TableCell>{admin.phone_no}</TableCell>
-                  <TableCell>
-                    <Button
-                      variant="outlined"
-                      color="error"
-                      onClick={() => handleDeleteSubAdmin(admin.id)}
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
-
-      {/* New Sub-Admin Dialog */}
-      <Dialog open={openNewSubAdmin} onClose={() => setOpenNewSubAdmin(false)}>
-        <DialogTitle>Add New Sub-Admin</DialogTitle>
-        <DialogContent>
-          <TextField
-            fullWidth
-            label="Username"
-            margin="normal"
-            value={newSubAdmin.username}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setNewSubAdmin({ ...newSubAdmin, username: e.target.value })
-            }
-          />
-          <TextField
-            fullWidth
-            label="Email"
-            margin="normal"
-            value={newSubAdmin.email}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setNewSubAdmin({ ...newSubAdmin, email: e.target.value })
-            }
-          />
-          <TextField
-            fullWidth
-            label="Password"
-            type="password"
-            margin="normal"
-            value={newSubAdmin.password}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setNewSubAdmin({ ...newSubAdmin, password: e.target.value })
-            }
-          />
-          <TextField
-            fullWidth
-            label="Full Name"
-            margin="normal"
-            value={newSubAdmin.full_name}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setNewSubAdmin({ ...newSubAdmin, full_name: e.target.value })
-            }
-          />
-          <TextField
-            fullWidth
-            label="Phone Number"
-            margin="normal"
-            value={newSubAdmin.phone_no}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setNewSubAdmin({ ...newSubAdmin, phone_no: e.target.value })
-            }
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpenNewSubAdmin(false)}>Cancel</Button>
-          <Button onClick={handleAddSubAdmin} variant="contained" color="primary">
-            Add
-          </Button>
-        </DialogActions>
-      </Dialog>
-
-      {/* Password Change Dialog */}
-      <Dialog open={openPasswordChange} onClose={() => setOpenPasswordChange(false)}>
-        <DialogTitle>Change Password</DialogTitle>
-        <DialogContent>
-          <TextField
-            fullWidth
-            label="Current Password"
-            type="password"
-            margin="normal"
-            value={passwordData.currentPassword}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setPasswordData({
-                ...passwordData,
-                currentPassword: e.target.value,
-              })
-            }
-          />
-          <TextField
-            fullWidth
-            label="New Password"
-            type="password"
-            margin="normal"
-            value={passwordData.newPassword}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setPasswordData({
-                ...passwordData,
-                newPassword: e.target.value,
-              })
-            }
-          />
-          <TextField
-            fullWidth
-            label="Confirm New Password"
-            type="password"
-            margin="normal"
-            value={passwordData.confirmPassword}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setPasswordData({
-                ...passwordData,
-                confirmPassword: e.target.value,
-              })
-            }
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpenPasswordChange(false)}>Cancel</Button>
-          <Button
-            onClick={handleChangePassword}
-            variant="contained"
-            color="primary"
+            onClick={() => setOpenPasswordChange(true)}
+            sx={{ '&:hover': { backgroundColor: '#b91c1c' } }}
           >
             Change Password
           </Button>
-        </DialogActions>
-      </Dialog>
+        </Paper>
 
-      {/* Snackbar for notifications */}
-      <Snackbar
-        open={snackbar.open}
-        autoHideDuration={6000}
-        onClose={() => setSnackbar({ ...snackbar, open: false })}
-      >
-        <Alert
+        {/* Sub-Admins Management Section */}
+        <Paper sx={{ p: 2 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+            <Typography variant="h6">Sub-Admins Management</Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => setOpenNewSubAdmin(true)}
+              sx={{ '&:hover': { backgroundColor: '#b91c1c' } }}
+            >
+              Add New Sub-Admin
+            </Button>
+          </Box>
+
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Username</TableCell>
+                  <TableCell>Email</TableCell>
+                  <TableCell>Full Name</TableCell>
+                  <TableCell>Phone</TableCell>
+                  <TableCell>Actions</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {subAdmins.map((admin) => (
+                  <TableRow key={admin.id}>
+                    <TableCell>{admin.username}</TableCell>
+                    <TableCell>{admin.email}</TableCell>
+                    <TableCell>{admin.full_name}</TableCell>
+                    <TableCell>{admin.phone_no}</TableCell>
+                    <TableCell>
+                      <Button
+                        variant="outlined"
+                        color="error"
+                        onClick={() => handleDeleteSubAdmin(admin.id)}
+                      >
+                        Delete
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+
+        {/* New Sub-Admin Dialog */}
+        <Dialog open={openNewSubAdmin} onClose={() => setOpenNewSubAdmin(false)}>
+          <DialogTitle>Add New Sub-Admin</DialogTitle>
+          <DialogContent>
+            <TextField
+              fullWidth
+              label="Username"
+              margin="normal"
+              value={newSubAdmin.username}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setNewSubAdmin({ ...newSubAdmin, username: e.target.value })
+              }
+            />
+            <TextField
+              fullWidth
+              label="Email"
+              margin="normal"
+              value={newSubAdmin.email}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setNewSubAdmin({ ...newSubAdmin, email: e.target.value })
+              }
+            />
+            <TextField
+              fullWidth
+              label="Password"
+              type="password"
+              margin="normal"
+              value={newSubAdmin.password}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setNewSubAdmin({ ...newSubAdmin, password: e.target.value })
+              }
+            />
+            <TextField
+              fullWidth
+              label="Full Name"
+              margin="normal"
+              value={newSubAdmin.full_name}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setNewSubAdmin({ ...newSubAdmin, full_name: e.target.value })
+              }
+            />
+            <TextField
+              fullWidth
+              label="Phone Number"
+              margin="normal"
+              value={newSubAdmin.phone_no}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setNewSubAdmin({ ...newSubAdmin, phone_no: e.target.value })
+              }
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setOpenNewSubAdmin(false)}>Cancel</Button>
+            <Button onClick={handleAddSubAdmin} variant="contained" color="primary">
+              Add
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        {/* Password Change Dialog */}
+        <Dialog open={openPasswordChange} onClose={() => setOpenPasswordChange(false)}>
+          <DialogTitle>Change Password</DialogTitle>
+          <DialogContent>
+            <TextField
+              fullWidth
+              label="Current Password"
+              type="password"
+              margin="normal"
+              value={passwordData.currentPassword}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setPasswordData({
+                  ...passwordData,
+                  currentPassword: e.target.value,
+                })
+              }
+            />
+            <TextField
+              fullWidth
+              label="New Password"
+              type="password"
+              margin="normal"
+              value={passwordData.newPassword}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setPasswordData({
+                  ...passwordData,
+                  newPassword: e.target.value,
+                })
+              }
+            />
+            <TextField
+              fullWidth
+              label="Confirm New Password"
+              type="password"
+              margin="normal"
+              value={passwordData.confirmPassword}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setPasswordData({
+                  ...passwordData,
+                  confirmPassword: e.target.value,
+                })
+              }
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setOpenPasswordChange(false)}>Cancel</Button>
+            <Button
+              onClick={handleChangePassword}
+              variant="contained"
+              color="primary"
+            >
+              Change Password
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        {/* Snackbar for notifications */}
+        <Snackbar
+          open={snackbar.open}
+          autoHideDuration={6000}
           onClose={() => setSnackbar({ ...snackbar, open: false })}
-          severity={snackbar.severity}
         >
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
-    </Box>
+          <Alert
+            onClose={() => setSnackbar({ ...snackbar, open: false })}
+            severity={snackbar.severity}
+          >
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
+      </Box>
+    </ThemeProvider>
   );
 };
 

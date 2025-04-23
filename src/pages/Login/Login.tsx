@@ -214,7 +214,7 @@ const Login = () => {
 
               {/* Right Column: CAPTCHA Section */}
               <div className="space-y-4">
-                <div className="bg-blue-600 w-48 h-16 flex items-center justify-center mx-auto">
+                <div className="bg-[#E6534E] w-48 h-16 flex items-center justify-center mx-auto">
                   <span
                     style={{ userSelect: "none" }}
                     className="text-white text-2xl font-bold font-[Patrick Hand]"

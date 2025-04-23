@@ -53,7 +53,7 @@
 .login-container .login-button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #E6534E;
   color: white;
   border: none;
   border-radius: 5px;
@@ -68,7 +68,7 @@
 }
 
 .login-container .login-button:hover:not(:disabled) {
-  background-color: #0056b3;
+  background-color: #b91c1c;
 }
 
 .handwritten-title {

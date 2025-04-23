@@ -1,5 +1,5 @@
 .application_form {
-    border-radius: 0 !important;
+    border-radius: 0;
     font-size: 12px;
     max-width: 1000px;
     margin: auto;
@@ -31,6 +31,7 @@
 
 .application_form .applicationTitle {
     background-color: #F8F9FA;
+    color: #E6534E;
 }
 
 .application_form .applicationTitle h5, .application_form .applicationTitle button {
@@ -69,12 +70,14 @@
 .application_form .apps_no button {
     border-radius: 2px;
     border: none;
-    background-color: #286090;
+    background-color: #E6534E;
     color: white;
     width:100px;
     font-size: 12px;
-    
+}
 
+.application_form .apps_no button:hover {
+    background-color: #b91c1c;
 }
 
 .application_form .apps_no_cont {
@@ -164,7 +167,7 @@
 .application_form .apps_no button {
     border-radius: 2px;
     border: none;
-    background-color: #286090;
+    background-color: #E6534E;
     color: white;
     width:100px;
     font-size: 12px;
@@ -262,4 +265,26 @@
 }
 .application_form input:required, .application_form select:required {
     border: 1px solid rgb(218, 137, 32); 
+}
+
+.application_form input[type="text"],
+.application_form input[type="number"],
+.application_form input[type="date"],
+.application_form select {
+  border: 1px solid #ced4da;
+  border-radius: 0;
+  padding: 0.375rem 0.75rem;
+}
+
+.application_form input[type="text"]:focus,
+.application_form input[type="number"]:focus,
+.application_form input[type="date"]:focus,
+.application_form select:focus {
+  border-color: #E6534E;
+  box-shadow: 0 0 0 0.2rem rgba(230, 83, 78, 0.25);
+}
+
+.application_form .form-check-input:checked {
+  background-color: #E6534E;
+  border-color: #E6534E;
 }
