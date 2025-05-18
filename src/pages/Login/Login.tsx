@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect, ChangeEvent, FormEvent } from "react";
 import axios from "../../Api/axios";
+import { AxiosError } from "axios";
 import { RefreshCw } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AppState } from "../../App";
@@ -13,6 +14,20 @@ import { User } from 'lucide-react';
 interface FormData {
   username: string;
   password: string;
+}
+
+interface LoginResponse {
+  message: string;
+  token: string;
+  username: string;
+  userid: string;
+  role: string;
+}
+
+interface AppUser {
+  id: string;
+  username: string;
+  role: string;
 }
 
 function generateCaptcha(): string {
@@ -65,33 +80,29 @@ const Login = () => {
     }
   
     try {
-      const response = await axios.post("/admin/login", { username, password });
+      const response = await axios.post<LoginResponse>("/admin/login", { username, password });
   
       if (response.status === 200) {
-        // Successful login
-        toast.success("Login successful!");
+        toast.success(response.data.message);
         localStorage.setItem("loginSuccess", "true");
-        const { token, username, userid, role } = response.data;
+        const { token, username: loginUsername, userid, role } = response.data;
         localStorage.setItem("token", token);
-        localStorage.setItem("username", username);
+        localStorage.setItem("username", loginUsername);
         localStorage.setItem("userid", userid);
         localStorage.setItem("role", role);
-        setUser({ id: userid, username, role });
+        setUser({ id: userid, username: loginUsername, role } as AppUser);
         setTimeout(() => {
           navigate(navStateData.state?.redirect || "/", { replace: true });
-          
         }, 0);
-      } 
-      
+      }
     } catch (error) {
-      if (error.response?.status === 401) {
-        toast.error("Invalid username or password.");
-      } 
-      else
-      {
-      toast.error("An error occurred. Please try again.");}
+      if (error instanceof AxiosError && error.response) {
+        const errorMessage = error.response.data?.message || "An error occurred. Please try again.";
+        toast.error(errorMessage);
+      } else {
+        toast.error("An error occurred. Please try again.");
+      }
     } finally {
-
       setLoading(false);
     }
   };

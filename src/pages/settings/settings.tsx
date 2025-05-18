@@ -39,6 +39,7 @@ interface SubAdmin {
   full_name: string;
   phone_no: string;
   role: string;
+  hold_user: boolean;
 }
 
 interface PasswordChangeData {
@@ -53,6 +54,14 @@ interface NewSubAdminData {
   password: string;
   full_name: string;
   phone_no: string;
+}
+
+interface ApiResponse {
+  message: string;
+}
+
+interface ApiErrorResponse {
+  message: string;
 }
 
 const Settings: React.FC = () => {
@@ -88,6 +97,7 @@ const Settings: React.FC = () => {
   const fetchSubAdmins = async () => {
     try {
       const response = await axios.get('/admin/admins');
+      console.log('Fetched sub-admins:', response.data); 
       setSubAdmins(response.data.filter((admin: SubAdmin) => admin.role === 'sub admin'));
     } catch (error) {
       const axiosError = error as AxiosError;
@@ -127,6 +137,24 @@ const Settings: React.FC = () => {
       showSnackbar(axiosError.message || 'Failed to delete sub-admin', 'error');
     }
   };
+
+  const handleHoldSubAdmin = async (username: string) => {
+    try {
+      const response = await axios.post<ApiResponse>('/admin/hold-user', { username });
+      console.log("**********",response.data)
+      setSubAdmins(prev => prev.map(admin => 
+        admin.username === username 
+          ? {...admin, hold_user: !admin.hold_user} 
+          : admin
+      ));
+      showSnackbar(response.data.message, 'success');
+    } catch (error) {
+      const axiosError = error as AxiosError<ApiErrorResponse>;
+      const errorMessage = axiosError.response?.data?.message || 'Failed to update sub-admin hold status';
+      showSnackbar(errorMessage, 'error');
+    }
+  };
+
 
   const handleChangePassword = async () => {
     if (passwordData.newPassword !== passwordData.confirmPassword) {
@@ -215,13 +243,28 @@ const Settings: React.FC = () => {
                     <TableCell>{admin.full_name}</TableCell>
                     <TableCell>{admin.phone_no}</TableCell>
                     <TableCell>
-                      <Button
-                        variant="outlined"
-                        color="error"
-                        onClick={() => handleDeleteSubAdmin(admin.id)}
-                      >
-                        Delete
-                      </Button>
+                      <Box sx={{ display: 'flex', gap: 1 }}>
+                        <Button
+                          variant="outlined"
+                          color={admin.hold_user ? "error" : "primary"}
+                          onClick={() => handleHoldSubAdmin(admin.username)}
+                          sx={{
+                            backgroundColor: admin.hold_user ? 'rgba(230, 83, 78, 0.1)' : 'transparent',
+                            '&:hover': {
+                              backgroundColor: admin.hold_user ? 'rgba(230, 83, 78, 0.2)' : 'rgba(230, 83, 78, 0.1)',
+                            }
+                          }}
+                        >
+                          {admin.hold_user ? 'Unhold' : 'Hold'}
+                        </Button>
+                        <Button
+                          variant="outlined"
+                          color="error"
+                          onClick={() => handleDeleteSubAdmin(admin.id)}
+                        >
+                          Delete
+                        </Button>
+                      </Box>
                     </TableCell>
                   </TableRow>
                 ))}
